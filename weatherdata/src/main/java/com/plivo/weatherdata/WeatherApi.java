@@ -19,58 +19,68 @@ public class WeatherApi {
 	public WeatherInfo kelvinInfo=null;
 	public WeatherInfo celsiusInfo=null;
 	Logger log = Logger.getLogger(WeatherApi.class);
-	
+
 	//To get the response in kelvin
 	public WeatherInfo getKelvinValueOfTemp(String apiId,String cityId,String baseUri,String endPoint) {
 		RestAssured.baseURI=baseUri;
 		request=RestAssured.given();
-		
+
 		queryPara = new LinkedHashMap<String, String>();
 		queryPara.put("appid",apiId);
 		queryPara.put("id",cityId);
 		request.queryParams(queryPara);
-		
+
 		headerPara = new LinkedHashMap<String, String>();
 		headerPara.put("Content-Type", "application/json");
 		headerPara.put("Accept", "application/json");
 		request.headers(headerPara);
-		
-		res=request.get(endPoint);
-		Reporter.log("Response of getKelvinValue method API: "+res.asString(),true);
-		String tempInKelvin=res.jsonPath().getString("main.temp");
-		String placeId=res.jsonPath().getString("id");
-		String cityName=res.jsonPath().getString("name");
-		String country=res.jsonPath().getString("sys.country");
-		kelvinInfo=new WeatherInfo(tempInKelvin,placeId,cityName,country);
-		Reporter.log("created kelvinInfo reference variable to store tempInKelvin,placeId,cityName,country info",true);
+
+		try {
+			res=request.get(endPoint);
+			Reporter.log("Response of getKelvinValue method API: "+res.asString(),true);
+			String tempInKelvin=res.jsonPath().getString("main.temp");
+			String placeId=res.jsonPath().getString("id");
+			String cityName=res.jsonPath().getString("name");
+			String country=res.jsonPath().getString("sys.country");
+			kelvinInfo=new WeatherInfo(tempInKelvin,placeId,cityName,country);
+			Reporter.log("created kelvinInfo reference variable to store tempInKelvin,placeId,cityName,country info",true);
+		}
+		catch(Exception e) {
+			Reporter.log("Exception occurs in getKelvinValueOfTemp response please check the response",true);
+		}
 		return kelvinInfo;
 	}
 	//To get the response in degree adding query units=metric
 	public WeatherInfo getDegreeValueOfTemp(String apiId,String cityId,String baseUri,String endPoint, String units) {
 		RestAssured.baseURI=baseUri;
 		request=RestAssured.given();
-		
+
 		log.info("adding query parameters apiId, cityId and conversion units=metric under getDegreeValueOfTemp method");
 		queryPara = new LinkedHashMap<String, String>();
 		queryPara.put("appid",apiId);
 		queryPara.put("id",cityId);
 		queryPara.put("units",units);
 		request.queryParams(queryPara);
-		
+
 		headerPara = new LinkedHashMap<String, String>();
 		headerPara.put("Content-Type", "application/json");
 		headerPara.put("Accept", "application/json");
 		request.headers(headerPara);
-		
+
 		log.info("To get the response using get api");
-		res=request.get(endPoint);
-		Reporter.log("Response of getDegreeValueOfTemp method API: "+res.asString(),true);
-		String tempInDegree=res.jsonPath().getString("main.temp");
-		String placeId=res.jsonPath().getString("id");
-		String cityName=res.jsonPath().getString("name");
-		String country=res.jsonPath().getString("sys.country");
-		celsiusInfo=new WeatherInfo(tempInDegree,placeId,cityName,country);
-		Reporter.log("created celsiusInfo reference variable to store tempInDegree,placeId,cityName,country info",true);
+		try {
+			res=request.get(endPoint);
+			Reporter.log("Response of getDegreeValueOfTemp method API: "+res.asString(),true);
+			String tempInDegree=res.jsonPath().getString("main.temp");
+			String placeId=res.jsonPath().getString("id");
+			String cityName=res.jsonPath().getString("name");
+			String country=res.jsonPath().getString("sys.country");
+			celsiusInfo=new WeatherInfo(tempInDegree,placeId,cityName,country);
+			Reporter.log("created celsiusInfo reference variable to store tempInDegree,placeId,cityName,country info",true);
+		}
+		catch(Exception e) {
+			Reporter.log("Exception occurs in getDegreeValueOfTemp response please check the response",true);
+		}
 		return celsiusInfo;
 	}
 }
