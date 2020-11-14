@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Sat Nov 14 17:22:04 IST 2020</td>
+<td>Started on:</td><td>Sat Nov 14 22:50:21 IST 2020</td>
 </tr>
-<tr><td>Total time:</td><td>1 seconds (1965 ms)</td>
+<tr><td>Total time:</td><td>2 seconds (2734 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -80,12 +80,16 @@ function toggleAllBoxes() {
 
 <a href="#Output-641882263" onClick="toggleAllBoxes();">Show all outputs</a>
 <div class='log' id="Output-641882263">
-Response of API: {"coord":{"lon":77.6,"lat":12.98},"weather":[{"id":802,"main":"Clouds","description":"scattered clouds","icon":"03d"}],"base":"stations","main":{"temp":300.73,"feels_like":300.76,"temp_min":300.15,"temp_max":301.15,"pressure":1011,"humidity":54},"visibility":8000,"wind":{"speed":3.6,"deg":60},"clouds":{"all":40},"dt":1605354566,"sys":{"type":1,"id":9205,"country":"IN","sunrise":1605314882,"sunset":1605356417},"timezone":19800,"id":1277333,"name":"Bengaluru","cod":200}<br/>
+Response of getKelvinValue method API: {"coord":{"lon":77.6,"lat":12.98},"weather":[{"id":801,"main":"Clouds","description":"few clouds","icon":"02n"}],"base":"stations","main":{"temp":294.73,"feels_like":296.37,"temp_min":294.15,"temp_max":295.15,"pressure":1016,"humidity":88},"visibility":6000,"wind":{"speed":2.6,"deg":70},"clouds":{"all":20},"dt":1605374334,"sys":{"type":1,"id":9205,"country":"IN","sunrise":1605314882,"sunset":1605356417},"timezone":19800,"id":1277333,"name":"Bengaluru","cod":200}<br/>
+created kelvinInfo reference variable to store tempInKelvin,placeId,cityName,country info<br/>
+Response of getDegreeValueOfTemp method API: {"coord":{"lon":77.6,"lat":12.98},"weather":[{"id":801,"main":"Clouds","description":"few clouds","icon":"02n"}],"base":"stations","main":{"temp":21.58,"feels_like":23.22,"temp_min":21,"temp_max":22,"pressure":1016,"humidity":88},"visibility":6000,"wind":{"speed":2.6,"deg":70},"clouds":{"all":20},"dt":1605374334,"sys":{"type":1,"id":9205,"country":"IN","sunrise":1605314882,"sunset":1605356417},"timezone":19800,"id":1277333,"name":"Bengaluru","cod":200}<br/>
+created celsiusInfo reference variable to store tempInDegree,placeId,cityName,country info<br/>
+Max and Min error temp values are: 22.011612 & 21.14841<br/>
 </div>
 </td>
 <td></td>
-<td>1</td>
-<td>com.plivo.weatherdata.WeatherDataComparision@694e1548</td></tr>
+<td>2</td>
+<td>com.plivo.weatherdata.WeatherDataComparision@1c3a4799</td></tr>
 </table><p>
 </body>
 </html>

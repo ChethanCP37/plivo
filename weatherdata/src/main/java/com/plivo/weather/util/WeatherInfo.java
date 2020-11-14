@@ -1,16 +1,14 @@
 package com.plivo.weather.util;
 
 public class WeatherInfo {
-	String tempDegree=null;
-	String tempFahr=null;
-	String windSpeed=null;
-	//String humidity=null;
-	public WeatherInfo(String tempDegree, String tempFahr, String windSpeed) {
-		this.tempDegree=tempDegree;
-		this.tempFahr=tempFahr;
-		this.windSpeed=windSpeed;
-		//this.humidity=humidity;
+	public String temp=null;
+	public String placeId=null;
+	public String cityName=null;
+	public String country=null;
+	public WeatherInfo(String temp, String placeId, String cityName, String country) {
+		this.temp=temp;
+		this.placeId=placeId;
+		this.cityName=cityName;
+		this.country=country;
 	}
-	
-	
 }

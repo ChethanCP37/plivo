@@ -5,6 +5,7 @@
     <classes>
       <class name="com.plivo.weatherdata.WeatherDataComparision">
         <methods>
+          <include name="initialize"/>
           <include name="compareWeatherInfo"/>
         </methods>
       </class> <!-- com.plivo.weatherdata.WeatherDataComparision -->

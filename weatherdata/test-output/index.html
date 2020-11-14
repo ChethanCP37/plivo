@@ -135,7 +135,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/tmp/testng-eclipse-470964074/testng-customsuite.xml</span>
+            <span class="header-content">/tmp/testng-eclipse--392389361/testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -188,12 +188,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'compareWeatherInfo')
 data.setCell(0, 2, 'com.plivo.weatherdata.WeatherDataComparision')
-data.setCell(0, 3, 1942);
+data.setCell(0, 3, 2714);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 seconds</span>
+              <span class="suite-total-time">Total running time: 2 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -207,7 +207,11 @@ return data;
             <div class="reporter-method-div">
               <span class="reporter-method-name">compareWeatherInfo</span>
               <div class="reporter-method-output-div">
-                <span class="reporter-method-output">Response of API: {"coord":{"lon":77.6,"lat":12.98},"weather":[{"id":802,"main":"Clouds","description":"scattered clouds","icon":"03d"}],"base":"stations","main":{"temp":300.73,"feels_like":300.76,"temp_min":300.15,"temp_max":301.15,"pressure":1011,"humidity":54},"visibility":8000,"wind":{"speed":3.6,"deg":60},"clouds":{"all":40},"dt":1605354566,"sys":{"type":1,"id":9205,"country":"IN","sunrise":1605314882,"sunset":1605356417},"timezone":19800,"id":1277333,"name":"Bengaluru","cod":200}</span>
+                <span class="reporter-method-output">Response of getKelvinValue method API: {"coord":{"lon":77.6,"lat":12.98},"weather":[{"id":801,"main":"Clouds","description":"few clouds","icon":"02n"}],"base":"stations","main":{"temp":294.73,"feels_like":296.37,"temp_min":294.15,"temp_max":295.15,"pressure":1016,"humidity":88},"visibility":6000,"wind":{"speed":2.6,"deg":70},"clouds":{"all":20},"dt":1605374334,"sys":{"type":1,"id":9205,"country":"IN","sunrise":1605314882,"sunset":1605356417},"timezone":19800,"id":1277333,"name":"Bengaluru","cod":200}</span>
+                <span class="reporter-method-output">created kelvinInfo reference variable to store tempInKelvin,placeId,cityName,country info</span>
+                <span class="reporter-method-output">Response of getDegreeValueOfTemp method API: {"coord":{"lon":77.6,"lat":12.98},"weather":[{"id":801,"main":"Clouds","description":"few clouds","icon":"02n"}],"base":"stations","main":{"temp":21.58,"feels_like":23.22,"temp_min":21,"temp_max":22,"pressure":1016,"humidity":88},"visibility":6000,"wind":{"speed":2.6,"deg":70},"clouds":{"all":20},"dt":1605374334,"sys":{"type":1,"id":9205,"country":"IN","sunrise":1605314882,"sunset":1605356417},"timezone":19800,"id":1277333,"name":"Bengaluru","cod":200}</span>
+                <span class="reporter-method-output">created celsiusInfo reference variable to store tempInDegree,placeId,cityName,country info</span>
+                <span class="reporter-method-output">Max and Min error temp values are: 22.011612 & 21.14841</span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -232,7 +236,7 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="test-method">
                 <span class="method-name">compareWeatherInfo</span>
-                <span class="method-start">25 ms</span>
+                <span class="method-start">24 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
