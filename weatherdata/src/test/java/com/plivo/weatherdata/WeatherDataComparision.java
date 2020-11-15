@@ -3,14 +3,16 @@ package com.plivo.weatherdata;
 import java.util.Map;
 
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import org.testng.log4testng.Logger;
 
 import com.plivo.weather.util.ApiPropertyFileReader;
 import com.plivo.weather.util.Util;
 import com.plivo.weather.util.WeatherInfo;
+
+import io.restassured.response.Response;
 
 
 public class WeatherDataComparision {
@@ -18,6 +20,7 @@ public class WeatherDataComparision {
 	public WeatherInfo kelvinInfo=null;
 	public WeatherInfo celsiusInfo=null;
 	public WeatherApi wea=null;
+	public Response res=null;
 
 	ApiPropertyFileReader api= new ApiPropertyFileReader();
 	Logger log = Logger.getLogger(WeatherApi.class);
@@ -37,6 +40,7 @@ public class WeatherDataComparision {
 		wea= new WeatherApi();
 		kelvinInfo = wea.getKelvinValueOfTemp(apiId, cityId, baseUri, endPoint);
 		celsiusInfo = wea.getDegreeValueOfTemp(apiId, cityId, baseUri, endPoint, units);
+
 		Map<String, Float> tempValues=Util.getMaxMinTempErrorValues(kelvinInfo, celsiusInfo);
 		float maxTemp = 0,minTemp = 0,tempInCelsius=0;
 		if((tempValues.get("maxTemp"))!=null && (tempValues.get("minTemp"))!=null && (tempValues.get("tempInCelsius"))!=null) {
@@ -44,9 +48,11 @@ public class WeatherDataComparision {
 			minTemp=tempValues.get("minTemp");
 			tempInCelsius=tempValues.get("tempInCelsius");
 		}
-		
+
 		if(maxTemp!=0 && minTemp!=0 && tempInCelsius!=0) {
 			Assert.assertTrue(maxTemp>tempInCelsius && minTemp<tempInCelsius, "Error temparature values are not close to temparature in celcius");
+			Assert.assertEquals(kelvinInfo.statusCode, 200,"Status Code is incorrect for kelvinInfo");
+			Assert.assertEquals(celsiusInfo.statusCode, 200,"Status Code is incorrect for celsiusInfo");
 		}
 		else {
 			Assert.fail("No data returned from API");
@@ -64,10 +70,35 @@ public class WeatherDataComparision {
 		}
 	}
 
-	@Test(description="When apiId is not correct")
+	@Test(description="When apiId is not correct and is validated for changing unit to metric in api")
 	public void invalidApiId() {
-
-
+		int expectedStatusCode=401;
+		String expectedErrorMsg="Invalid API key";
+	
+		wea= new WeatherApi();
+		//Appended with 1 for apiId
+		res=wea.getWeatherInfo(apiId+1, cityId, baseUri, endPoint, units);
+		Reporter.log("Response for invalid api id: "+res.asString(),true);
+		int actualStatusCode=res.getStatusCode();
+		String actualErrorMsg= res.jsonPath().getString("message");
+	
+		Assert.assertEquals(actualStatusCode,expectedStatusCode,"API ID is not correct, please recheck the apiId");
+		Assert.assertTrue(actualErrorMsg.contains(expectedErrorMsg), "Response message is not correct for invalidApiId");
 	}
-
+	
+	@Test(description="When CityId is not correct and is validated for changing unit to metric in api")
+	public void invalidCityId() {
+		int expectedStatusCode=404;
+		String expectedErrorMsg="city not found";
+	
+		wea= new WeatherApi();
+		//Appended with 1 for cityId
+		res=wea.getWeatherInfo(apiId, cityId+1, baseUri, endPoint, units);
+		Reporter.log("Response for invalid city id: "+res.asString(),true);
+		int actualStatusCode=res.getStatusCode();
+		String actualErrorMsg= res.jsonPath().getString("message");
+	
+		Assert.assertEquals(actualStatusCode,expectedStatusCode,"City ID is not correct, please recheck the CityId");
+		Assert.assertTrue(actualErrorMsg.contains(expectedErrorMsg), "Response message is not correct for invalidCityId");
+	}
 }
