@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test thread-count="5" name="Test(failed)">
+    <groups>
+      <run>
+        <include name="Negative_TC"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.plivo.weatherdata.WeatherDataComparision">
+        <methods>
+          <include name="invalidApiId"/>
+          <include name="invalidCityId"/>
+          <include name="invalidStringToCityId"/>
+        </methods>
+      </class> <!-- com.plivo.weatherdata.WeatherDataComparision -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

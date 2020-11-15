@@ -107,17 +107,17 @@
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.plivo.weatherdata.WeatherDataComparision" hash-for-method="compareWeatherInfo">compareWeatherInfo</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.plivo.weatherdata.WeatherDataComparision" hash-for-method="invalidApiId">invalidApiId</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.plivo.weatherdata.WeatherDataComparision" hash-for-method="invalidCityId">invalidCityId</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.plivo.weatherdata.WeatherDataComparision" hash-for-method="invalidNumericToCityId">invalidNumericToCityId</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.plivo.weatherdata.WeatherDataComparision" hash-for-method="invalidStringToCityId">invalidStringToCityId</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -144,16 +144,7 @@
                   </a> <!-- compareTemparatureInfo -->
                   <span class="method-name">compareTemparatureInfo</span>
                   <em>
-(To check error temparature values are close to temparature in celcius or not)                  </em>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="compareWeatherInfo">
-                  </a> <!-- compareWeatherInfo -->
-                  <span class="method-name">compareWeatherInfo</span>
-                  <em>
-(Comparision of cityId, cityName and country name from api's which return kelvin and celcius)                  </em>
+(To check metric unit api temperature is lies between error temperature values of standard api)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -162,16 +153,25 @@
                   </a> <!-- invalidApiId -->
                   <span class="method-name">invalidApiId</span>
                   <em>
-(When apiId is not correct and is validated for changing unit to metric in api)                  </em>
+(When apiId is not correct and is validated for metric unit api)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="invalidCityId">
-                  </a> <!-- invalidCityId -->
-                  <span class="method-name">invalidCityId</span>
+                  <a name="invalidNumericToCityId">
+                  </a> <!-- invalidNumericToCityId -->
+                  <span class="method-name">invalidNumericToCityId</span>
                   <em>
-(When CityId is not correct and is validated for changing unit to metric in api)                  </em>
+(When CityId is passed with invalid numeric id and is validated for metric unit api)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="invalidStringToCityId">
+                  </a> <!-- invalidStringToCityId -->
+                  <span class="method-name">invalidStringToCityId</span>
+                  <em>
+(When invalid string is passed to cityId field and is validated for metric unit api)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -179,7 +179,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/tmp/testng-eclipse--1744414177/testng-customsuite.xml</span>
+            <span class="header-content">/tmp/testng-eclipse--1312991053/testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -232,24 +232,24 @@ data.addRows(4);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'compareTemparatureInfo')
 data.setCell(0, 2, 'com.plivo.weatherdata.WeatherDataComparision')
-data.setCell(0, 3, 17937);
+data.setCell(0, 3, 2861);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'invalidApiId')
 data.setCell(1, 2, 'com.plivo.weatherdata.WeatherDataComparision')
-data.setCell(1, 3, 2293);
+data.setCell(1, 3, 1739);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'invalidCityId')
+data.setCell(2, 1, 'invalidNumericToCityId')
 data.setCell(2, 2, 'com.plivo.weatherdata.WeatherDataComparision')
-data.setCell(2, 3, 1624);
+data.setCell(2, 3, 834);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'compareWeatherInfo')
+data.setCell(3, 1, 'invalidStringToCityId')
 data.setCell(3, 2, 'com.plivo.weatherdata.WeatherDataComparision')
-data.setCell(3, 3, 1);
+data.setCell(3, 3, 624);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 21 seconds</span>
+              <span class="suite-total-time">Total running time: 6 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -261,6 +261,18 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="reporter-method-div">
+              <span class="reporter-method-name">invalidNumericToCityId</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">Response for invalid numeric to city id: {"cod":"404","message":"city not found"}</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">invalidStringToCityId</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">Response for invalid string to CityId: {"cod":"400","message":"1261481abc is not a city ID"}</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
               <span class="reporter-method-name">invalidApiId</span>
               <div class="reporter-method-output-div">
                 <span class="reporter-method-output">Response for invalid api id: {"cod":401, "message": "Invalid API key. Please see http://openweathermap.org/faq#error401 for more info."}</span>
@@ -269,15 +281,7 @@ return data;
             <div class="reporter-method-div">
               <span class="reporter-method-name">compareTemparatureInfo</span>
               <div class="reporter-method-output-div">
-                <span class="reporter-method-output">Response of getKelvinValue method API: {"coord":{"lon":77.23,"lat":28.61},"weather":[{"id":711,"main":"Smoke","description":"smoke","icon":"50d"}],"base":"stations","main":{"temp":299.15,"feels_like":298.2,"temp_min":299.15,"temp_max":299.15,"pressure":1016,"humidity":44},"visibility":1200,"wind":{"speed":2.6,"deg":100},"clouds":{"all":0},"dt":1605424163,"sys":{"type":1,"id":9161,"country":"IN","sunrise":1605402836,"sunset":1605441462},"timezone":19800,"id":1261481,"name":"New Delhi","cod":200}</span>
-                <span class="reporter-method-output">Response of getDegreeValueOfTemp method API: {"coord":{"lon":77.23,"lat":28.61},"weather":[{"id":711,"main":"Smoke","description":"smoke","icon":"50d"}],"base":"stations","main":{"temp":26,"feels_like":25.05,"temp_min":26,"temp_max":26,"pressure":1016,"humidity":44},"visibility":1200,"wind":{"speed":2.6,"deg":100},"clouds":{"all":0},"dt":1605423907,"sys":{"type":1,"id":9161,"country":"IN","sunrise":1605402836,"sunset":1605441462},"timezone":19800,"id":1261481,"name":"New Delhi","cod":200}</span>
-                <span class="reporter-method-output">Max and Min error temp values are: 26.519995 & 25.479994</span>
-              </div> <!-- reporter-method-output-div -->
-            </div> <!-- reporter-method-div -->
-            <div class="reporter-method-div">
-              <span class="reporter-method-name">invalidCityId</span>
-              <div class="reporter-method-output-div">
-                <span class="reporter-method-output">Response for invalid city id: {"cod":"404","message":"city not found"}</span>
+                <span class="reporter-method-output">Max and Min error temp values are: 21.419994 & 20.579994</span>
               </div> <!-- reporter-method-output-div -->
             </div> <!-- reporter-method-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -302,19 +306,19 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="test-method">
                 <span class="method-name">compareTemparatureInfo</span>
-                <span class="method-start">27 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">compareWeatherInfo</span>
-                <span class="method-start">17968 ms</span>
+                <span class="method-start">26 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">invalidApiId</span>
-                <span class="method-start">17971 ms</span>
+                <span class="method-start">2889 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">invalidCityId</span>
-                <span class="method-start">20265 ms</span>
+                <span class="method-name">invalidNumericToCityId</span>
+                <span class="method-start">4629 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">invalidStringToCityId</span>
+                <span class="method-start">5464 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

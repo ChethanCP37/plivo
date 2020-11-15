@@ -15,32 +15,17 @@ public class WeatherApi {
 	public RequestSpecification request=null;
 	public Response res=null;
 	public HashMap<String, String> queryPara=null;
-	public HashMap<String, String> headerPara = null;
-	public WeatherInfo kelvinInfo=null;
-	public WeatherInfo celsiusInfo=null;
+	public WeatherInfo tempInfo=null;
 	public WeatherApi weaApi=null;
 	Logger log = Logger.getLogger(WeatherApi.class);
 
-	/* To get the weather info response
-	 * This is the common method to get the response for both Kelvin api and Celcius api
-	 * Kelvin API provides response of temperature in Kelvin
-	 * Celcius API provides response of temperature in Degrees where we need to pass units=metric
-	 */
-	public Response getWeatherInfo(String apiId,String cityId,String baseUri,String endPoint, String units) {
+	//To get the weather info response
+	public Response getWeatherInfo(String baseUri,String endPoint, HashMap<String, String> queryParam) {
 		RestAssured.baseURI=baseUri;
 		request=RestAssured.given();
 
-		queryPara = new LinkedHashMap<String, String>();
-		queryPara.put("appid",apiId);
-		queryPara.put("id",cityId);
-		queryPara.put("units",units);
-		request.queryParams(queryPara);
-		
-		//Without headers also we can able to get response
-		headerPara = new LinkedHashMap<String, String>();
-		headerPara.put("Content-Type", "application/json");
-		headerPara.put("Accept", "application/json");
-		request.headers(headerPara);
+		//To assign query parameters
+		request.queryParams(queryParam);
 
 		try {
 			res=request.get(endPoint);
@@ -52,44 +37,40 @@ public class WeatherApi {
 		return res;
 	}
 
-	//To validate the Kelvin response
-	public WeatherInfo getKelvinValueOfTemp(String apiId,String cityId,String baseUri,String endPoint) {
+	//To get the cityId, cityName, country and status code from response 
+	public WeatherInfo getValueOfTemp(String baseUri,String endPoint, HashMap<String, String>  queryparam) {
 		try {
 			weaApi= new WeatherApi();
-			res=weaApi.getWeatherInfo(apiId,cityId,baseUri,endPoint, null);
-			Reporter.log("Response of getKelvinValue method API: "+res.asString(),true);
-			String tempInKelvin=res.jsonPath().getString("main.temp");
-			String placeId=res.jsonPath().getString("id");
-			String cityName=res.jsonPath().getString("name");
-			String country=res.jsonPath().getString("sys.country");
-			int statusCode= res.getStatusCode();
-			kelvinInfo=new WeatherInfo(tempInKelvin,placeId,cityName,country,statusCode);
-			log.info("created kelvinInfo reference variable to store tempInKelvin,placeId,cityName,country info");
-		}
-		catch(Exception e) {
-			Reporter.log("Exception occurs in getKelvinValueOfTemp method, please check the response",true);
-		}
-		return kelvinInfo;
-	}
-
-	//To validate the degree response from API, adding query units=metric
-	public WeatherInfo getDegreeValueOfTemp(String apiId,String cityId,String baseUri,String endPoint, String units) {
-		try {
-			weaApi= new WeatherApi();
-			res=weaApi.getWeatherInfo(apiId,cityId,baseUri,endPoint, units);
-			Reporter.log("Response of getDegreeValueOfTemp method API: "+res.asString(),true);
+			res=weaApi.getWeatherInfo(baseUri,endPoint,queryparam);
+			
 			String tempInDegree=res.jsonPath().getString("main.temp");
 			String placeId=res.jsonPath().getString("id");
 			String cityName=res.jsonPath().getString("name");
 			String country=res.jsonPath().getString("sys.country");
 			int statusCode= res.getStatusCode();
-			celsiusInfo=new WeatherInfo(tempInDegree,placeId,cityName,country,statusCode);
-			log.info("created celsiusInfo reference variable to store tempInDegree,placeId,cityName,country info");
+			tempInfo=new WeatherInfo(tempInDegree,placeId,cityName,country,statusCode);
+			log.info("created tempInfo reference variable to store tempInDegree, placeId, cityName, country information");
 		}
 		catch(Exception e) {
-			Reporter.log("Exception occurs in getDegreeValueOfTemp method, please check the response",true);
+			Reporter.log("Exception occurs in getValueOfTemp method, please check the response",true);
 		}
-		return celsiusInfo;
+		return tempInfo;
 	}
 
+	//Returns queryPara which accepts apiId, cityId and units
+	public HashMap<String, String> getQueryParam(String apiId, String cityId, String units) {
+
+		queryPara = new LinkedHashMap<String, String>();
+		queryPara.put("appid",apiId);
+		queryPara.put("id",cityId);
+		queryPara.put("units",units);
+		return queryPara;
+	}
+	//Returns queryPara which accepts apiId and cityId only
+	public HashMap<String, String> getQueryParamWithoutUnits(String apiId, String cityId) {
+		queryPara = new LinkedHashMap<String, String>();
+		queryPara.put("appid",apiId);
+		queryPara.put("id",cityId);
+		return queryPara;
+	}
 }
