@@ -2,7 +2,7 @@
 <testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
   <reporter-output>
     <line>
-      <![CDATA[Max and Min error temp values are: 21.419994 & 20.579994]]>
+      <![CDATA[Max and Min error temp values are: 20.399994 & 19.599995]]>
     </line>
     <line>
       <![CDATA[Response for invalid api id: {"cod":401, "message": "Invalid API key. Please see http://openweathermap.org/faq#error401 for more info."}]]>
@@ -14,37 +14,37 @@
       <![CDATA[Response for invalid string to CityId: {"cod":"400","message":"1261481abc is not a city ID"}]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="6083" started-at="2020-11-15T20:05:42 IST" finished-at="2020-11-15T20:05:48 IST">
+  <suite name="Default suite" duration-ms="4822" started-at="2020-11-15T20:35:45 IST" finished-at="2020-11-15T20:35:50 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="6083" started-at="2020-11-15T20:05:42 IST" finished-at="2020-11-15T20:05:48 IST">
+    <test name="Default test" duration-ms="4822" started-at="2020-11-15T20:35:45 IST" finished-at="2020-11-15T20:35:50 IST">
       <class name="com.plivo.weatherdata.WeatherDataComparision">
-        <test-method status="PASS" signature="initialize()[pri:0, instance:com.plivo.weatherdata.WeatherDataComparision@7494e528]" name="initialize" is-config="true" duration-ms="8" started-at="2020-11-15T20:05:42 IST" finished-at="2020-11-15T20:05:42 IST">
+        <test-method status="PASS" signature="initialize()[pri:0, instance:com.plivo.weatherdata.WeatherDataComparision@7494e528]" name="initialize" is-config="true" duration-ms="7" started-at="2020-11-15T20:35:45 IST" finished-at="2020-11-15T20:35:45 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialize -->
-        <test-method status="PASS" signature="compareTemparatureInfo()[pri:0, instance:com.plivo.weatherdata.WeatherDataComparision@7494e528]" name="compareTemparatureInfo" duration-ms="2861" started-at="2020-11-15T20:05:42 IST" description="To check metric unit api temperature is lies between error temperature values of standard api" finished-at="2020-11-15T20:05:45 IST">
+        <test-method status="PASS" signature="compareTemparatureInfo()[pri:0, instance:com.plivo.weatherdata.WeatherDataComparision@7494e528]" name="compareTemparatureInfo" duration-ms="3042" started-at="2020-11-15T20:35:45 IST" description="To check metric unit api temperature is lies between error temperature values of standard api" finished-at="2020-11-15T20:35:48 IST">
           <reporter-output>
             <line>
-              <![CDATA[Max and Min error temp values are: 21.419994 & 20.579994]]>
+              <![CDATA[Max and Min error temp values are: 20.399994 & 19.599995]]>
             </line>
           </reporter-output>
         </test-method> <!-- compareTemparatureInfo -->
-        <test-method status="PASS" signature="invalidApiId()[pri:0, instance:com.plivo.weatherdata.WeatherDataComparision@7494e528]" name="invalidApiId" duration-ms="1739" started-at="2020-11-15T20:05:45 IST" description="When apiId is not correct and is validated for metric unit api" finished-at="2020-11-15T20:05:47 IST">
+        <test-method status="PASS" signature="invalidApiId()[pri:0, instance:com.plivo.weatherdata.WeatherDataComparision@7494e528]" name="invalidApiId" duration-ms="628" started-at="2020-11-15T20:35:48 IST" description="When apiId is not correct and is validated for metric unit api" finished-at="2020-11-15T20:35:49 IST">
           <reporter-output>
             <line>
               <![CDATA[Response for invalid api id: {"cod":401, "message": "Invalid API key. Please see http://openweathermap.org/faq#error401 for more info."}]]>
             </line>
           </reporter-output>
         </test-method> <!-- invalidApiId -->
-        <test-method status="PASS" signature="invalidNumericToCityId()[pri:0, instance:com.plivo.weatherdata.WeatherDataComparision@7494e528]" name="invalidNumericToCityId" duration-ms="834" started-at="2020-11-15T20:05:47 IST" description="When CityId is passed with invalid numeric id and is validated for metric unit api" finished-at="2020-11-15T20:05:48 IST">
+        <test-method status="PASS" signature="invalidNumericToCityId()[pri:0, instance:com.plivo.weatherdata.WeatherDataComparision@7494e528]" name="invalidNumericToCityId" duration-ms="548" started-at="2020-11-15T20:35:49 IST" description="When CityId is passed with invalid numeric id and is validated for metric unit api" finished-at="2020-11-15T20:35:49 IST">
           <reporter-output>
             <line>
               <![CDATA[Response for invalid numeric to city id: {"cod":"404","message":"city not found"}]]>
             </line>
           </reporter-output>
         </test-method> <!-- invalidNumericToCityId -->
-        <test-method status="PASS" signature="invalidStringToCityId()[pri:0, instance:com.plivo.weatherdata.WeatherDataComparision@7494e528]" name="invalidStringToCityId" duration-ms="624" started-at="2020-11-15T20:05:48 IST" description="When invalid string is passed to cityId field and is validated for metric unit api" finished-at="2020-11-15T20:05:48 IST">
+        <test-method status="PASS" signature="invalidStringToCityId()[pri:0, instance:com.plivo.weatherdata.WeatherDataComparision@7494e528]" name="invalidStringToCityId" duration-ms="577" started-at="2020-11-15T20:35:49 IST" description="When invalid string is passed to cityId field and is validated for metric unit api" finished-at="2020-11-15T20:35:50 IST">
           <reporter-output>
             <line>
               <![CDATA[Response for invalid string to CityId: {"cod":"400","message":"1261481abc is not a city ID"}]]>
